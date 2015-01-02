@@ -1,0 +1,29 @@
+#Vi mode, not emacs
+set editing-mode vi
+set keymap vi-command
+set keymap vi-insert
+
+#Show all completions on tab
+set show-all-if-ambiguous on
+
+#Ignore Case
+set completion-ignore-case on
+
+#Search your history that matches the prefix typed
+"\e\e[A" history-search-backward
+"\e\e[B" history-search-forward
+
+#list all completions and select first one
+TAB: menu-complete
+
+#shift-TAB cycles backward
+"\e[Z": menu-complete-backward
+
+#Option-up/option-down applies to insert mode
+"\e\e[A": history-search-backward
+"\e\e[B": history-search-forward
+
+#Insert arguments from last command
+"p" "i !!*\r"
+#Fix bug from binding above
+"p": self-insert
